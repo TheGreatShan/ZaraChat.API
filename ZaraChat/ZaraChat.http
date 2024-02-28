@@ -1,0 +1,6 @@
+@ZaraChat_HostAddress = http://localhost:5208
+
+GET {{ZaraChat_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

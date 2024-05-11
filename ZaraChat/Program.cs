@@ -8,18 +8,17 @@ public class MyClass
         builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
-        
+
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseHttpsRedirection();
 
 
-        app.MapGet("/version", () =>
-            {
-               return "v0.0.1";
-            })
+        app.MapGet("/version", () => { return "v0.0.1"; })
             .WithName("Version")
             .WithOpenApi();
+        
+        
 
         app.Run();
     }

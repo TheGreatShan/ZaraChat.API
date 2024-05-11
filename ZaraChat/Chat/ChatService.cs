@@ -1,11 +1,15 @@
 namespace ZaraChat.Chat;
 
+using BusinessLogic;
+
 internal static class ChatService
 {
-    internal static List<ChatMessage> Ask(List<ChatMessage> input, string token)
+    internal static async Task<string> Ask(ApiInput input)
     {
-        return new List<ChatMessage>();
+        var response = OpenAICall.GetResponse(input.ChatMessages, input.Token);
+        return await response;
     }
 }
 
-internal record ChatMessage(string Role, string Message);
+
+public record ApiInput(string Token, List<ChatMessage> ChatMessages);

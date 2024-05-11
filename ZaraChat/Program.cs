@@ -1,4 +1,9 @@
-public class MyClass
+using Microsoft.AspNetCore.Mvc;
+using ZaraChat.Chat;
+
+namespace ZaraChat;
+
+public static class Program
 {
     public static void Main(string[] args)
     {
@@ -17,8 +22,12 @@ public class MyClass
         app.MapGet("/version", () => { return "v0.0.1"; })
             .WithName("Version")
             .WithOpenApi();
-        
-        
+
+        app.MapPost("/ask", async ([FromBody] ApiInput input) =>
+            await ChatService.Ask(input))
+            .WithName("Ask")
+            .WithOpenApi();
+
 
         app.Run();
     }

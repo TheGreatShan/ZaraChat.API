@@ -11,8 +11,9 @@ The Zara product lineup is a product line be TheGreatShan. It uses the OpenAI GP
 
 Planned products:
 1. ZaraChat API (this project)
-2. OKgpt powered by ZaraChat (mobile voice assistant)
-3. ZaraCompose (article creator)
+2. ZaraChat Docker Web App (GUI for @home usage)
+3. OKgpt powered by ZaraChat (mobile voice assistant)
+4. ZaraCompose (article creator)
 
 ## What is ZaraChat API?
 The ZaraChat API is the heart product of the Zara product lineup. Which contain the base API which contancts OpenAI. It is a base wrapper, in case of changes which need to be made in future are centralized.

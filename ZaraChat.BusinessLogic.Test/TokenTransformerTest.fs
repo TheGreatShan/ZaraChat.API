@@ -1,7 +1,8 @@
-module Tests
+module TokenTransformerTest
 
 open System
 open Xunit
+
 
 [<Fact>]
 let ``My test`` () =

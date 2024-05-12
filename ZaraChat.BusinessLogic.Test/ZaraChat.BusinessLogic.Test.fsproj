@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Tests.fs"/>
+        <Compile Include="TokenTransformerTest.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
 
@@ -24,6 +24,10 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ZaraChat.BusinessLogic\ZaraChat.BusinessLogic.fsproj" />
     </ItemGroup>
 
 </Project>

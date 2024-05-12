@@ -1,9 +1,13 @@
 module TokenTransformerTest
 
-open System
 open Xunit
+open ZaraChat.BusinessLogic.Helpers
 
 
 [<Fact>]
-let ``My test`` () =
-    Assert.True(true)
+let ``Removes Bearer infront of token`` () =
+    let token = "Bearer 1234"
+    let shouldToken = "1234"
+    let result = token
+                 |> TokenTransformer.removeBearer
+    Assert.Equal(shouldToken, result)

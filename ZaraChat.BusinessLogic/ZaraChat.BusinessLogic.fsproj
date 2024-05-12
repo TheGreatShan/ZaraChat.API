@@ -9,4 +9,12 @@
         <Compile Include="ChatOpenAI.fs" />
         <Compile Include="Helpers\TokenTransformer.fs" />
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
 </Project>

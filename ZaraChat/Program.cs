@@ -23,6 +23,7 @@ public static class Program
             .WithName("Version")
             .WithOpenApi();
 
+        // TODO pass the token with the Header
         app.MapPost("/ask", async ([FromBody] ApiInput input) =>
             await ChatService.Ask(input))
             .WithName("Ask")

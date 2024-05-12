@@ -10,7 +10,7 @@
 
     <ItemGroup>
         <Compile Include="TokenTransformerTest.fs" />
-        <Compile Include="Program.fs"/>
+        <Compile Include="ChatOpenAITest.fs" />
     </ItemGroup>
 
     <ItemGroup>

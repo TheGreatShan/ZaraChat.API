@@ -26,12 +26,12 @@ type RequestChat =
       ChatMessages: List<OpenAIChatMessage> }
 
 module ResponseTransformer =
-    let toOpenAIChatMessage (response: seq<ChatMessage>) =
+    let ToOpenAIChatMessage (response: seq<ChatMessage>) =
         response
         |> Seq.map (fun x -> { Role = x.Role; Content = x.Message })
         |> Seq.toList
 
-    let toChatMessage (response: string, chatMessages: seq<ChatMessage>) =
+    let ToChatMessage (response: string, chatMessages: seq<ChatMessage>) =
         let openAiResponse = JObject.Parse(response)
         let messageResp = openAiResponse["choices"].First["message"].ToString()
 
@@ -49,7 +49,7 @@ module OpenAICall =
             use client = new HttpClient()
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}")
 
-            let openAiChatMessages = chatMessages |> ResponseTransformer.toOpenAIChatMessage
+            let openAiChatMessages = chatMessages |> ResponseTransformer.ToOpenAIChatMessage
 
             let requestData =
                 { Model = "gpt-4-turbo"
@@ -68,6 +68,6 @@ module OpenAICall =
 
             let! content = postAsync.Content.ReadAsStringAsync() |> Async.AwaitTask
 
-            let chatMessages = ResponseTransformer.toChatMessage (content, chatMessages)
+            let chatMessages = ResponseTransformer.ToChatMessage (content, chatMessages)
             return chatMessages
         }

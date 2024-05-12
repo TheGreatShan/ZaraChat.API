@@ -1,5 +1,5 @@
 
-![zarachat_banner](https://github.com/TheGreatShan/ZaraChat.API/assets/61542805/24e3ee28-5373-4f9c-808c-df71adf9269f)
+![zarachatbanner_dmsans](https://github.com/TheGreatShan/ZaraChat.API/assets/61542805/cc04a3aa-684f-41da-b5f3-1d0c6a23d602)
 
 
 

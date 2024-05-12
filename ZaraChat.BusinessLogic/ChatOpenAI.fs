@@ -23,6 +23,12 @@ type RequestChat =
       [<JsonPropertyName("messages")>]
       ChatMessages: List<OpenAIChatMessage> }
 
+module ResponseTransformer =
+    let toOpenAIChatMessage (response: seq<ChatMessage>) =
+        response
+        |> Seq.map (fun x -> { Role = x.Role; Content = x.Message })
+        |> Seq.toList
+
 module OpenAICall =
     let GetResponse (chatMessages: seq<ChatMessage>, token: string) =
         task {
@@ -31,10 +37,8 @@ module OpenAICall =
 
             let openAiChatMessages = 
                 chatMessages
-                |> Seq.map (fun x -> { Role = x.Role; Content = x.Message })
-                |> Seq.toList
-
-            // TODO shift to own function
+                |> ResponseTransformer.toOpenAIChatMessage            
+            
             let requestData =
                 { Model = "gpt-4-turbo"
                   ChatMessages = openAiChatMessages }
@@ -50,3 +54,5 @@ module OpenAICall =
 
             return content
         }
+
+

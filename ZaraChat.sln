@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaraChat", "ZaraChat\ZaraCh
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ZaraChat.BusinessLogic", "ZaraChat.BusinessLogic\ZaraChat.BusinessLogic.fsproj", "{B04C9014-D4CF-4BAF-8B6C-982507147AF5}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ZaraChat.BusinessLogic.Test", "ZaraChat.BusinessLogic.Test\ZaraChat.BusinessLogic.Test.fsproj", "{5A3521AA-2970-4ECB-8CF2-F1A18A4243E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B04C9014-D4CF-4BAF-8B6C-982507147AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B04C9014-D4CF-4BAF-8B6C-982507147AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B04C9014-D4CF-4BAF-8B6C-982507147AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3521AA-2970-4ECB-8CF2-F1A18A4243E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3521AA-2970-4ECB-8CF2-F1A18A4243E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3521AA-2970-4ECB-8CF2-F1A18A4243E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3521AA-2970-4ECB-8CF2-F1A18A4243E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

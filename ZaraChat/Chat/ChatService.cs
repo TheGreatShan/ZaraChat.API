@@ -1,3 +1,5 @@
+using ZaraChat.BusinessLogic.Helpers;
+
 namespace ZaraChat.Chat;
 
 using BusinessLogic;
@@ -6,10 +8,9 @@ internal static class ChatService
 {
     internal static async Task<string> Ask(ApiInput input)
     {
-        var response = OpenAICall.GetResponse(input.ChatMessages, input.Token);
+        var response = OpenAICall.GetResponse(input.ChatMessages, TokenTransformer.removeBearer(input.Token));
         return await response;
     }
 }
-
 
 public record ApiInput(string Token, List<ChatMessage> ChatMessages);

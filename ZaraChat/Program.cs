@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ZaraChat.BusinessLogic;
 using ZaraChat.Chat;
 
 namespace ZaraChat;
@@ -24,8 +25,8 @@ public static class Program
             .WithOpenApi();
 
         // TODO pass the token with the Header
-        app.MapPost("/ask", async ([FromBody] ApiInput input) =>
-            await ChatService.Ask(input))
+        app.MapPost("/ask", async (HttpContext context, List<ChatMessage> chatMessages) =>
+                await ChatService.Ask(new ApiInput(context.Request.Headers.Authorization!, chatMessages)))
             .WithName("Ask")
             .WithOpenApi();
 

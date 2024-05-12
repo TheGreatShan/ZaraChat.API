@@ -7,5 +7,6 @@
 
     <ItemGroup>
         <Compile Include="ChatOpenAI.fs" />
+        <Compile Include="Helpers\TokenTransformer.fs" />
     </ItemGroup>
 </Project>

@@ -1,4 +1,10 @@
-public class MyClass
+using Microsoft.AspNetCore.Mvc;
+using ZaraChat.BusinessLogic;
+using ZaraChat.Chat;
+
+namespace ZaraChat;
+
+public static class Program
 {
     public static void Main(string[] args)
     {
@@ -9,40 +15,22 @@ public class MyClass
 
         var app = builder.Build();
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.UseHttpsRedirection();
 
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
-        app.MapGet("/weatherforecast", () =>
-            {
-                var forecast = Enumerable.Range(1, 5).Select(index =>
-                        new WeatherForecast
-                        (
-                            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                            Random.Shared.Next(-20, 55),
-                            summaries[Random.Shared.Next(summaries.Length)]
-                        ))
-                    .ToArray();
-                return forecast;
-            })
-            .WithName("GetWeatherForecast")
+        app.MapGet("/version", () => { return "v0.0.1"; })
+            .WithName("Version")
             .WithOpenApi();
+
+        // TODO pass the token with the Header
+        app.MapPost("/ask", async (HttpContext context, List<ChatMessage> chatMessages) =>
+                await ChatService.Ask(new ApiInput(context.Request.Headers.Authorization!, chatMessages)))
+            .WithName("Ask")
+            .WithOpenApi();
+
 
         app.Run();
     }
-}
-
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

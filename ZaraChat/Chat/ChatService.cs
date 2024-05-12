@@ -1,6 +1,16 @@
+using ZaraChat.BusinessLogic.Helpers;
+
 namespace ZaraChat.Chat;
 
-public class ChatService
+using BusinessLogic;
+
+internal static class ChatService
 {
-    
+    internal static async Task<IEnumerable<ChatMessage>> Ask(ApiInput input)
+    {
+        var response = OpenAICall.GetResponse(input.ChatMessages, TokenTransformer.removeBearer(input.Token));
+        return await response;
+    }
 }
+
+public record ApiInput(string Token, List<ChatMessage> ChatMessages);

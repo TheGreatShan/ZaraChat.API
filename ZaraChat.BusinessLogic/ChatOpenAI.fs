@@ -2,10 +2,11 @@
 
 open System.Net.Http
 open System.Text
-open System.Text.Json
 open System.Text.Json.Serialization
-open Newtonsoft.Json
 open Newtonsoft.Json.Linq
+open OpenAIClient
+open ZaraChat.BusinessLogic.Helpers
+
 
 type ChatMessage =
     { [<JsonPropertyName("role")>]
@@ -46,9 +47,9 @@ module ResponseTransformer =
 module OpenAICall =
     let GetResponse (chatMessages: seq<ChatMessage>, token: string) =
         task {
-            use client = new HttpClient()
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}")
-
+  
+            use client = OpenAIClient.CreateClient(token)
+            
             let openAiChatMessages = chatMessages |> ResponseTransformer.ToOpenAIChatMessage
 
             let requestData =

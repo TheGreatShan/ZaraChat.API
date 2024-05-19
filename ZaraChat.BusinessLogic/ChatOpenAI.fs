@@ -4,7 +4,6 @@ open System.Net.Http
 open System.Text
 open System.Text.Json.Serialization
 open Newtonsoft.Json.Linq
-open OpenAIClient
 open ZaraChat.BusinessLogic.Helpers
 
 
@@ -47,13 +46,13 @@ module ResponseTransformer =
 module OpenAICall =
     let GetResponse (chatMessages: seq<ChatMessage>, token: string) =
         task {
-  
+
             use client = OpenAIClient.CreateClient(token)
-            
+
             let openAiChatMessages = chatMessages |> ResponseTransformer.ToOpenAIChatMessage
 
             let requestData =
-                { Model = "gpt-4-turbo"
+                { Model = "gpt-4o"
                   ChatMessages = openAiChatMessages }
 
             let! postAsync =
@@ -69,6 +68,6 @@ module OpenAICall =
 
             let! content = postAsync.Content.ReadAsStringAsync() |> Async.AwaitTask
 
-            let chatMessages = ResponseTransformer.ToChatMessage (content, chatMessages)
+            let chatMessages = ResponseTransformer.ToChatMessage(content, chatMessages)
             return chatMessages
         }

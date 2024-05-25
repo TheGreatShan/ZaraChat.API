@@ -9,6 +9,7 @@
         <Compile Include="Helpers\TokenTransformer.fs" />
         <Compile Include="Helpers\OpenAIClient.fs" />
         <Compile Include="Helpers\FormDataConverter.fs" />
+        <Compile Include="Helpers\ResponseProcessor.fs" />
         <Compile Include="ChatOpenAI.fs" />
         <Compile Include="WhispererOpenAI.fs" />
     </ItemGroup>

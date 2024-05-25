@@ -11,12 +11,14 @@ module WhispererOpenAI =
             use client = OpenAIClient.CreateClient(token)
             use form = FormDataConverter.CreateFormData(content, fileName)
 
-            let! transcribe = 
+            let! transcribe =
                 client.PostAsync("https://api.openai.com/v1/audio/transcriptions", form)
-                    |> Async.AwaitTask
-                    
-            return transcribe.Content.ReadAsStringAsync()
-                    |> Async.AwaitTask
-                    |> Async.RunSynchronously
-            
+                |> Async.AwaitTask
+
+            let transcriptionText = transcribe.Content.ReadAsStringAsync() |> Async.AwaitTask
+
+            return transcriptionText
+                   |> Async.RunSynchronously
+                   |> ResponseProcessor.toTranscription
+
         }

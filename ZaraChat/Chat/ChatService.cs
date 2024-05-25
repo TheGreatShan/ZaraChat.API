@@ -12,11 +12,11 @@ internal static class ChatService
         return response;
     }
 
-    internal static string SpeechToText(SpeechToTextInput input)
+    internal static Transcription SpeechToText(SpeechToTextInput input)
     {
         var response =
             WhispererOpenAI.SpeechToText(input.Content, input.FileName, TokenTransformer.RemoveBearer(input.Token));
-        return response.Result.ToString();
+        return response.Result;
     }
 }
 

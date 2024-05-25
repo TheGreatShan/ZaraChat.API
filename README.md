@@ -16,7 +16,7 @@ Planned products:
 4. ZaraCompose (article creator)
 
 ## What is ZaraChat API?
-The ZaraChat API is the heart product of the ZaraChat product lineup. Which contain the base API which contancts OpenAI. It is a base wrapper, in case of changes which need to be made in future are centralized.
+The ZaraChat API is the heart product of the ZaraChat product lineup. Which contain the base API which contacts OpenAI. It is a base wrapper, in case of changes which need to be made in future are centralized.
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
@@ -25,5 +25,5 @@ The ZaraChat API is the heart product of the ZaraChat product lineup. Which cont
 
 ## Documentation
 You will find the documentation on this website, as soon it is available:
-[Documentation](https://docs.muras.ch)
+[Documentation](https://docs.muraleetharan.ch/zarachat)
 
